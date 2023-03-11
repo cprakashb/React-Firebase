@@ -13,7 +13,9 @@ export default function Header() {
     // invokes when location is modified
     useEffect(() => {
         const { pathname } = location;
-        if (pathname === "/tools") {
+        if (pathname === "/dashboard" || pathname === "/") {
+            setActiveTab("dashboard")
+        } else if (pathname === "/tools") {
             setActiveTab("tools")
         } else if (pathname === "/profile") {
             setActiveTab("profile")
@@ -37,11 +39,15 @@ export default function Header() {
                             {
                                 currentUser?.uid ?
                                     <>
-                            
+                                        <li className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}>
+                                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                        </li>
                                         <li className={`nav-item ${activeTab === 'tools' ? 'active' : ''}`}>
                                             <Link className="nav-link" to="/tools">Tools</Link>
                                         </li>
-                                      
+                                        <li className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`}>
+                                            <Link className="nav-link" to="/profile">Profile</Link>
+                                        </li>
                                         <li className={`nav-item ${activeTab === 'report' ? 'active' : ''}`}>
                                             <Link className="nav-link" to="/" onClick={logout}>Logout</Link>
                                         </li>
