@@ -9,6 +9,8 @@ export default function Header() {
     const [activeTab, setActiveTab] = useState("home")
     const { currentUser, logout } = useAuth()
 
+    // set active tab based on selected route
+    // invokes when location is modified
     useEffect(() => {
         const { pathname } = location;
         if (pathname === "/tools") {
@@ -35,7 +37,7 @@ export default function Header() {
                             {
                                 currentUser?.uid ?
                                     <>
-                                       
+                            
                                         <li className={`nav-item ${activeTab === 'tools' ? 'active' : ''}`}>
                                             <Link className="nav-link" to="/tools">Tools</Link>
                                         </li>

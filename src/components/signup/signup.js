@@ -19,6 +19,7 @@ export default function SignUpPage() {
     const navigate = useNavigate();
     const { signUp } = useAuth()
 
+    // on change of email Adress - validation is done & updates emailAdress
     const handleEmailAddress = (event) => {
 
         let regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -36,7 +37,7 @@ export default function SignUpPage() {
             setEmailAddressError(false)
         }
     }
-
+    // on change of password - validation is done & updates password
     const handlePassword = (event) => {
         setPassword(event.target.value)
 
@@ -52,7 +53,7 @@ export default function SignUpPage() {
             setPasswordError(true)
         }
     }
-
+    // on change of confirmPassword - validation is done & updates confirmPassword
     const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value)
         if (password === event.target.value) {
@@ -64,10 +65,11 @@ export default function SignUpPage() {
         }
     }
 
-
+    // on click of sign up - invoked firebase api through useAuth hook 
     const handleSignUp = async (event) => {
         event.preventDefault()
         if (emailAddress.length > 0 && !emailAddressError && password.length > 0 && !passwordError && confirmPassword.length > 0 && !confirmPasswordError) {
+            // firebase signup
             await signUp(emailAddress, password).then(data => {
                 navigate("/home");
             }).catch(err => {

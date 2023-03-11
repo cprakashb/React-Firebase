@@ -1,5 +1,4 @@
 import React, { useState, useId, useDeferredValue } from 'react';
-import "./tools.scss"
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import "./tools.scss"
 
 const style = {
   position: 'absolute',
@@ -37,8 +37,6 @@ export default function Notes() {
 
   return (
     <section id="tools-page" className="tools-page text-center">
-
-
       <div className='container'>
         <Card sx={{ maxWidth: 500 }} className="mt-3 mx-auto">
           <CardContent>

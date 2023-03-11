@@ -16,6 +16,7 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const { signIn } = useAuth()
 
+    // on change of email Adress - validation is done & updates emailAdress
     const handleEmailAddress = (event) => {
 
         let regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -34,6 +35,7 @@ export default function LoginPage() {
         }
     }
 
+    // on change of password - validation is done & updates password
     const handlePassword = (event) => {
         setPassword(event.target.value)
 
@@ -46,9 +48,11 @@ export default function LoginPage() {
         }
     }
 
+    // on click of login - invoked firebase api through useAuth hook 
     const handleLogin = async (event) => {
         event.preventDefault()
         if (emailAddress.length > 0 && !emailAddressError && password.length > 0 && !passwordError) {
+            // firebase signIn
             await signIn(emailAddress, password).then(data => {
                 navigate("/")
             }).catch(err => {
